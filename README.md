@@ -31,29 +31,29 @@
 
 ### Installation
    
-   1. Clone the repository:
+1. Clone the repository:
    
-      https://github.com/DharshanKeshav/CODTECH_TASK-2--REAL-TIME-CHAT-APP.git
+   https://github.com/DharshanKeshav/CODTECH_TASK-2--REAL-TIME-CHAT-APP.git
       
-   3. Navigate to the project folder:
+2. Navigate to the project folder:
       
-      cd snap-crumb
+  cd snap-crumb
       
-   3.Install dependencies:
+3.Install dependencies:
    
-      npm install
+   npm install
       
-   4.Configuration
+4.Configuration
    
-      Create a .env file in the root directory and add your Supabase credentials:
-      VITE_SUPABASE_URL=your_supabase_project_url
-      VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   Create a .env file in the root directory and add your Supabase credentials:
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-   5.Running Locally
+5.Running Locally
      
-     npm run dev
+   npm run dev
 
-  ## ScreenShots
+## ScreenShots
 
   <img width="800" height="640" alt="Screenshot 2026-01-22 221551" src="https://github.com/user-attachments/assets/50c6cfa2-c5a2-4919-87e4-c69df81ded91" />
     
