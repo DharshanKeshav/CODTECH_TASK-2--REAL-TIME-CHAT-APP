@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 8% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 30 10% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 30 10% 10%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 32 65% 55%;
+    --primary-foreground: 30 8% 8%;
+
+    --secondary: 30 12% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 30 10% 15%;
+    --muted-foreground: 40 10% 55%;
+
+    --accent: 210 100% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 20%;
+    --input: 30 12% 16%;
+    --ring: 32 65% 55%;
+
+    --radius: 0.75rem;
+
+    /* SnapCrumb Custom Tokens */
+    --biscuit: 32 65% 55%;
+    --biscuit-light: 35 70% 70%;
+    --biscuit-dark: 28 55% 35%;
+    --crumb: 35 40% 40%;
+    --lightning: 210 100% 55%;
+    --lightning-glow: 210 100% 65%;
+    --chat-bubble-own: 32 45% 22%;
+    --chat-bubble-other: 30 10% 16%;
+    
+    /* Gradients */
+    --gradient-biscuit: linear-gradient(135deg, hsl(32 65% 55%), hsl(28 55% 45%));
+    --gradient-lightning: linear-gradient(135deg, hsl(210 100% 55%), hsl(200 100% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(30 8% 8%), hsl(30 10% 5%));
+    
+    /* Shadows */
+    --shadow-biscuit: 0 4px 20px -4px hsl(32 65% 55% / 0.3);
+    --shadow-lightning: 0 0 20px hsl(210 100% 55% / 0.4);
+    --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 30 10% 10%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 32 65% 55%;
+    --sidebar-primary-foreground: 30 8% 8%;
+    --sidebar-accent: 30 12% 18%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 30 15% 18%;
+    --sidebar-ring: 32 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif;
+  }
+}
+
+@layer components {
+  /* Cracked Biscuit Chat Bubble - Own Message */
+  .bubble-own {
+    @apply relative bg-[hsl(var(--chat-bubble-own))] px-4 py-2;
+    clip-path: polygon(
+      0% 8%, 3% 0%, 12% 5%, 25% 2%, 40% 6%, 55% 0%, 70% 4%, 85% 1%, 95% 5%, 100% 10%,
+      98% 25%, 100% 45%, 97% 60%, 100% 75%, 98% 90%, 95% 100%,
+      80% 97%, 65% 100%, 50% 96%, 35% 100%, 20% 98%, 8% 100%, 0% 95%,
+      2% 80%, 0% 60%, 3% 40%, 0% 25%
+    );
+  }
+
+  /* Cracked Biscuit Chat Bubble - Other's Message */
+  .bubble-other {
+    @apply relative bg-[hsl(var(--chat-bubble-other))] px-4 py-2;
+    clip-path: polygon(
+      5% 0%, 15% 4%, 30% 0%, 45% 3%, 60% 0%, 75% 5%, 90% 2%, 97% 6%, 100% 12%,
+      98% 30%, 100% 50%, 97% 70%, 100% 85%, 96% 95%, 92% 100%,
+      75% 98%, 60% 100%, 45% 97%, 30% 100%, 15% 96%, 5% 100%, 0% 92%,
+      2% 75%, 0% 55%, 3% 35%, 0% 15%
+    );
+  }
+
+  /* Lightning Glow Effect */
+  .lightning-glow {
+    @apply relative;
+    box-shadow: var(--shadow-lightning);
+  }
+
+  .lightning-glow::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg opacity-50;
+    background: var(--gradient-lightning);
+    filter: blur(20px);
+    z-index: -1;
+  }
+
+  /* Biscuit Button */
+  .btn-biscuit {
+    @apply relative overflow-hidden font-semibold transition-all duration-300;
+    background: var(--gradient-biscuit);
+    box-shadow: var(--shadow-biscuit);
+  }
+
+  .btn-biscuit:hover {
+    @apply scale-105;
+    box-shadow: 0 6px 25px -4px hsl(32 65% 55% / 0.5);
+  }
+
+  /* Status/Crumb Card */
+  .crumb-card {
+    @apply relative rounded-xl p-4 transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(30 12% 14%));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .crumb-card:hover {
+    @apply scale-[1.02];
+    border-color: hsl(var(--biscuit) / 0.3);
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--biscuit));
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--biscuit-light));
+  }
+
+  /* Floating Crumb Animation */
+  @keyframes float-crumb {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-float-crumb {
+    animation: float-crumb 3s ease-in-out infinite;
+  }
+
+  /* Lightning Pulse */
+  @keyframes lightning-pulse {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-lightning-pulse {
+    animation: lightning-pulse 2s ease-in-out infinite;
+  }
+
+  /* Message Slide In */
+  @keyframes slide-in-message {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-message-in {
+    animation: slide-in-message 0.3s ease-out forwards;
+  }
+
+  /* Crumb Appear */
+  @keyframes crumb-appear {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(-5deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  .animate-crumb-appear {
+    animation: crumb-appear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+}
+
+@layer utilities {
+  .text-gradient-biscuit {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--biscuit-light)), hsl(var(--biscuit)));
+  }
+
+  .text-gradient-lightning {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--lightning)), hsl(var(--lightning-glow)));
+  }
+
+  .bg-gradient-biscuit {
+    background: var(--gradient-biscuit);
+  }
+
+  .bg-gradient-lightning {
+    background: var(--gradient-lightning);
+  }
+
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+}
